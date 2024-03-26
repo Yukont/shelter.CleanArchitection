@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shelter", "shelter\shelter.csproj", "{CE72B785-7101-4C0D-8792-6B3E41FB0A2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shelter.Api", "shelter.Api\shelter.Api.csproj", "{8046E2C3-03EC-49FE-ACEE-1D8D18436570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shelter.Domain", "shelter.Domain\shelter.Domain.csproj", "{AEC3FD4C-D39E-4283-B797-D8B2AA1BBE0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{CE72B785-7101-4C0D-8792-6B3E41FB0A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE72B785-7101-4C0D-8792-6B3E41FB0A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE72B785-7101-4C0D-8792-6B3E41FB0A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8046E2C3-03EC-49FE-ACEE-1D8D18436570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8046E2C3-03EC-49FE-ACEE-1D8D18436570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8046E2C3-03EC-49FE-ACEE-1D8D18436570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8046E2C3-03EC-49FE-ACEE-1D8D18436570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC3FD4C-D39E-4283-B797-D8B2AA1BBE0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC3FD4C-D39E-4283-B797-D8B2AA1BBE0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC3FD4C-D39E-4283-B797-D8B2AA1BBE0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC3FD4C-D39E-4283-B797-D8B2AA1BBE0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
