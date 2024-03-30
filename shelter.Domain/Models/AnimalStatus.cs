@@ -19,7 +19,7 @@ public class AnimalStatus
 
         if (string.IsNullOrEmpty(name))
         {
-            error = "Cтатуса не может быть пустой";
+            error = "Cтатус не может быть пустой";
         }
         else if (name.Length > MAX_NAME_LENGTH)
         {

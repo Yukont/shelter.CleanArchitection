@@ -1,11 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using shelter.DataAccess.Context;
+using shelter.Domain.Abstractions;
+using shelter.Application.Services;
+using shelter.DataAccess.Repositories;
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<ShelterDbContext>(
+    options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ShelterDbContext)));
+    });
+
+builder.Services.AddScoped<IAnimalStatusService, AnimalStatusService>();
+builder.Services.AddScoped<IAnimalStatusesRepository, AnimalStatusesRepository>();
 
 var app = builder.Build();
 
