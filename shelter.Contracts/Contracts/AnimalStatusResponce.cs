@@ -1,4 +1,4 @@
-﻿namespace shelter.Api.Contracts
+﻿namespace shelter.Contracts.Contracts
 {
     public record AnimalStatusResponce(
         Guid Id,

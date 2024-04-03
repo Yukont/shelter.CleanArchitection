@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\shelter.Application\shelter.Application.csproj" />
+    <ProjectReference Include="..\shelter.Contracts\shelter.Contracts.csproj" />
     <ProjectReference Include="..\shelter.DataAccess\shelter.DataAccess.csproj" />
   </ItemGroup>
 

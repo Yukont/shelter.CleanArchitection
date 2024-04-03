@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using shelter.Api.Contracts;
+using shelter.Contracts.Contracts;
 using shelter.Domain.Abstractions;
 using shelter.Domain.Models;
+
 
 namespace shelter.Api.Controllers;
 

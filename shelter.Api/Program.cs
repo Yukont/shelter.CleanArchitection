@@ -4,6 +4,8 @@ using shelter.Domain.Abstractions;
 using shelter.Application.Services;
 using shelter.DataAccess.Repositories;
 using System.Globalization;
+using shelter.Application.Services.Authentications;
+using shelter.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +19,10 @@ builder.Services.AddDbContext<ShelterDbContext>(
         options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ShelterDbContext)));
     });
 
-builder.Services.AddScoped<IAnimalStatusService, AnimalStatusService>();
-builder.Services.AddScoped<IAnimalStatusesRepository, AnimalStatusesRepository>();
+builder.Services
+    .AddApplication()
+    .AddDataAccess();
+
 
 var app = builder.Build();
 
