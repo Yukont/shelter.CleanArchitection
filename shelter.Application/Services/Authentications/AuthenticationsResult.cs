@@ -1,9 +1,7 @@
-﻿namespace shelter.Application.Services.Authentications;
+﻿using shelter.Domain.Models;
 
-public record AuthenticationsResult(Guid Id,
-    string FirstName,
-    string LastName,
-    string Email,
-    Guid IdUserRole,
-    string Phone,
+namespace shelter.Application.Services.Authentications;
+
+public record AuthenticationsResult(
+    User User,
     string Token);

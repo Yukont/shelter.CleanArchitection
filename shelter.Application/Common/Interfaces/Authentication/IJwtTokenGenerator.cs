@@ -1,6 +1,8 @@
-﻿namespace shelter.Application.Common.Interfaces.Authentication;
+﻿using shelter.Domain.Models;
+
+namespace shelter.Application.Common.Interfaces.Authentication;
 
 public interface IJwtTokenGenerator
 {
-    string GenerateToken(Guid id, string firstName, string lastName);
+    string GenerateToken(User user);
 }

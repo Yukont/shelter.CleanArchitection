@@ -1,42 +1,62 @@
-﻿
-using shelter.Application.Common.Interfaces.Authentication;
+﻿using shelter.Application.Common.Interfaces.Authentication;
+using shelter.Application.Common.Interfaces.Persistence;
+using shelter.Domain.Models;
 
 namespace shelter.Application.Services.Authentications;
 
 public class AuthenticationsService : IAuthenticationsService
 {
+    private readonly IUserRepository userRepository;
     private readonly IJwtTokenGenerator jwtTokenGenerator;
 
-    public AuthenticationsService(IJwtTokenGenerator jwtTokenGenerator)
+    public AuthenticationsService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
     {
         this.jwtTokenGenerator = jwtTokenGenerator;
+        this.userRepository = userRepository;
     }
 
     public AuthenticationsResult Login(string email, string password)
     {
+        if (userRepository.GetUserByEmail(email) is not User user)
+        {
+            throw new Exception("User with given email does not exist");
+        }
+
+        if(user.Password !=  password)
+        {
+            throw new Exception("Invalid password");
+        }
+
+        var token = jwtTokenGenerator.GenerateToken(user);
+
         return new AuthenticationsResult(
-            Guid.NewGuid(), 
-            "firstName",
-            "lastName",
-            email,
-            Guid.NewGuid(),
-            "phone",
-            "token");
+            user,
+            token);
     }
 
     public AuthenticationsResult Register(string firstName, string lastName, string email, Guid idUserRole, string phone, string password)
     {
-        Guid userId = Guid.NewGuid();
+        if (userRepository.GetUserByEmail(email) is not null)
+        {
+            throw new Exception("User with given email already exists");
+        }
 
-        var token = jwtTokenGenerator.GenerateToken(userId, firstName, lastName);
+        var user = new User
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            Email = email,
+            IdUserRole = idUserRole,
+            Phone = phone,
+            Password = password
+        };
+
+        userRepository.Add(user);
+
+        var token = jwtTokenGenerator.GenerateToken(user);
 
         return new AuthenticationsResult(
-            userId,
-            firstName,
-            lastName,
-            email,
-            idUserRole,
-            phone,
+            user,
             token);
     }
 }

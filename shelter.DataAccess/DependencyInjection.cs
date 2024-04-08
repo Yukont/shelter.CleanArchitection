@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using shelter.Application.Common.Interfaces.Authentication;
+using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Application.Common.Interfaces.Service;
 using shelter.DataAccess.Authentication;
 using shelter.DataAccess.Repositories;
@@ -16,9 +17,12 @@ public static class DependencyInjection
         ConfigurationManager configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
         services.AddScoped<IAnimalStatusesRepository, AnimalStatusesRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }
 }
