@@ -1,8 +1,17 @@
 ﻿
+using shelter.Application.Common.Interfaces.Authentication;
+
 namespace shelter.Application.Services.Authentications;
 
 public class AuthenticationsService : IAuthenticationsService
 {
+    private readonly IJwtTokenGenerator jwtTokenGenerator;
+
+    public AuthenticationsService(IJwtTokenGenerator jwtTokenGenerator)
+    {
+        this.jwtTokenGenerator = jwtTokenGenerator;
+    }
+
     public AuthenticationsResult Login(string email, string password)
     {
         return new AuthenticationsResult(
@@ -17,13 +26,17 @@ public class AuthenticationsService : IAuthenticationsService
 
     public AuthenticationsResult Register(string firstName, string lastName, string email, Guid idUserRole, string phone, string password)
     {
+        Guid userId = Guid.NewGuid();
+
+        var token = jwtTokenGenerator.GenerateToken(userId, firstName, lastName);
+
         return new AuthenticationsResult(
-            Guid.NewGuid(),
+            userId,
             firstName,
             lastName,
             email,
             idUserRole,
             phone,
-            "token");
+            token);
     }
 }

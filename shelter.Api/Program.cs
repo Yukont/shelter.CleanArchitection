@@ -1,10 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using shelter.DataAccess.Context;
-using shelter.Domain.Abstractions;
-using shelter.Application.Services;
-using shelter.DataAccess.Repositories;
-using System.Globalization;
-using shelter.Application.Services.Authentications;
+using shelter.DataAccess;
 using shelter.Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,9 +15,8 @@ builder.Services.AddDbContext<ShelterDbContext>(
         options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ShelterDbContext)));
     });
 
-builder.Services
-    .AddApplication()
-    .AddDataAccess();
+builder.Services.AddApplication();
+builder.Services.AddDataAccess(builder.Configuration);
 
 
 var app = builder.Build();
