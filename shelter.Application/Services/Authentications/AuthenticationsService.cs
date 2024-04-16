@@ -1,4 +1,5 @@
-﻿using shelter.Application.Common.Interfaces.Authentication;
+﻿using shelter.Application.Common.Errors;
+using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Domain.Models;
 
@@ -38,7 +39,7 @@ public class AuthenticationsService : IAuthenticationsService
     {
         if (userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with given email already exists");
+            throw new DuplicateEmailException();
         }
 
         var user = new User
