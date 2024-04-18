@@ -1,6 +1,8 @@
-﻿using shelter.Application.Common.Errors;
+﻿using ErrorOr;
+using shelter.Application.Common.Errors;
 using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Persistence;
+using shelter.Domain.Common.Errors;
 using shelter.Domain.Models;
 
 namespace shelter.Application.Services.Authentications;
@@ -16,16 +18,16 @@ public class AuthenticationsService : IAuthenticationsService
         this.userRepository = userRepository;
     }
 
-    public AuthenticationsResult Login(string email, string password)
+    public ErrorOr<AuthenticationsResult> Login(string email, string password)
     {
         if (userRepository.GetUserByEmail(email) is not User user)
         {
-            throw new Exception("User with given email does not exist");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         if(user.Password !=  password)
         {
-            throw new Exception("Invalid password");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         var token = jwtTokenGenerator.GenerateToken(user);
@@ -35,11 +37,11 @@ public class AuthenticationsService : IAuthenticationsService
             token);
     }
 
-    public AuthenticationsResult Register(string firstName, string lastName, string email, Guid idUserRole, string phone, string password)
+    public ErrorOr<AuthenticationsResult> Register(string firstName, string lastName, string email, Guid idUserRole, string phone, string password)
     {
         if (userRepository.GetUserByEmail(email) is not null)
         {
-            throw new DuplicateEmailException();
+            return Errors.User.DublicateEmail;
         }
 
         var user = new User

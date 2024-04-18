@@ -6,9 +6,8 @@ using shelter.Domain.Models;
 
 namespace shelter.Api.Controllers;
 
-[ApiController]
 [Route("[controller]")]
-public class AnimalStatusController : ControllerBase
+public class AnimalStatusController : ApiController
 {
     private readonly IAnimalStatusService animalStatusService;
 

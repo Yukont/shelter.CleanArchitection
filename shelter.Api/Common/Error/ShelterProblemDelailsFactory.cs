@@ -77,7 +77,7 @@ public class ShelterProblemDelailsFactory : ProblemDetailsFactory
 
         if (options.ClientErrorMapping.TryGetValue(statusCode, out var clientErrorData))
         {
-            problemDetails.Title = clientErrorData.Title;
+            problemDetails.Title ??= clientErrorData.Title;
             problemDetails.Type = clientErrorData.Link;
         }
 

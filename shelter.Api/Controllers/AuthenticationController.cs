@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ErrorOr;
+using Microsoft.AspNetCore.Mvc;
 using shelter.Application.Services.Authentications;
 using shelter.Contracts.Authentications;
 
 namespace shelter.Api.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuthenticationController : Controller
+public class AuthenticationController : ApiController
 {
     private readonly IAuthenticationsService authenticationsService;
 
@@ -18,7 +18,7 @@ public class AuthenticationController : Controller
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        var authResult = authenticationsService.Register(
+        ErrorOr<AuthenticationsResult> authResult = authenticationsService.Register(
             request.FirstName,
             request.LastName,
             request.Email,
@@ -26,16 +26,9 @@ public class AuthenticationController : Controller
             request.Phone,
             request.Password);
 
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.User.Email,
-            authResult.User.IdUserRole,
-            authResult.User.Phone,
-            authResult.Token);
-
-        return Ok(response);
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors));
     }
 
     [HttpPost("login")]
@@ -45,15 +38,20 @@ public class AuthenticationController : Controller
             request.Email,
             request.Password);
 
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.User.Email,
-            authResult.User.IdUserRole,
-            authResult.User.Phone,
-            authResult.Token);
-
-        return Ok(response);
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors)
+            );
+    }
+    private static AuthenticationResponse MapAuthResult(AuthenticationsResult authResult)
+    {
+        return new AuthenticationResponse(
+                    authResult.User.Id,
+                    authResult.User.FirstName,
+                    authResult.User.LastName,
+                    authResult.User.Email,
+                    authResult.User.IdUserRole,
+                    authResult.User.Phone,
+                    authResult.Token);
     }
 }

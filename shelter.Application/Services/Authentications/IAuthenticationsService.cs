@@ -1,7 +1,9 @@
-﻿namespace shelter.Application.Services.Authentications;
+﻿using ErrorOr;
+
+namespace shelter.Application.Services.Authentications;
 
 public interface IAuthenticationsService
 {
-    AuthenticationsResult Login(string email, string password);
-    AuthenticationsResult Register(string firstName, string lastName, string email, Guid idUserRole ,string phone, string password); 
+    ErrorOr<AuthenticationsResult> Login(string email, string password);
+    ErrorOr<AuthenticationsResult> Register(string firstName, string lastName, string email, Guid idUserRole ,string phone, string password); 
 }
