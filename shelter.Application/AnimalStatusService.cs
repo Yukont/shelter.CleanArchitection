@@ -1,7 +1,7 @@
 ﻿using shelter.Domain.Abstractions;
 using shelter.Domain.Models;
 
-namespace shelter.Application.Services;
+namespace shelter.Application;
 
 public class AnimalStatusService : IAnimalStatusService
 {

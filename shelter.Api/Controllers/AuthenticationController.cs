@@ -1,6 +1,9 @@
 ﻿using ErrorOr;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using shelter.Application.Services.Authentications;
+using shelter.Application.Authentication.Commands.Register;
+using shelter.Application.Authentication.Common;
+using shelter.Application.Authentication.Queries.Login;
 using shelter.Contracts.Authentications;
 
 namespace shelter.Api.Controllers;
@@ -8,23 +11,18 @@ namespace shelter.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationsService authenticationsService;
+    private readonly ISender mediator;
 
-    public AuthenticationController(IAuthenticationsService authenticationsService)
+    public AuthenticationController(ISender mediator)
     {
-        this.authenticationsService = authenticationsService;
+        this.mediator = mediator;
     }
 
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationsResult> authResult = authenticationsService.Register(
-            request.FirstName,
-            request.LastName,
-            request.Email,
-            request.IdUserRole,
-            request.Phone,
-            request.Password);
+        var command = new RegisterCommand(request.FirstName, request.LastName, request.Email, request.IdUserRole, request.Phone, request.Password);
+        ErrorOr<AuthenticationResult> authResult = await mediator.Send(command);
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
@@ -32,18 +30,17 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        var authResult = authenticationsService.Login(
-            request.Email,
-            request.Password);
+        var query = new LoginQuery(request.Email, request.Password);
+        var authResult = await mediator.Send(query);
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
             errors => Problem(errors)
             );
     }
-    private static AuthenticationResponse MapAuthResult(AuthenticationsResult authResult)
+    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
     {
         return new AuthenticationResponse(
                     authResult.User.Id,
