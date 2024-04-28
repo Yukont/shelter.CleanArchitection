@@ -2,10 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using shelter.DataAccess.Context;
 using shelter.DataAccess;
 using shelter.Application;
-using shelter.Api.Middleware;
-using shelter.Api.Fillters;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using shelter.Api.Common.Error;
+using shelter.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +17,9 @@ builder.Services.AddDbContext<ShelterDbContext>(
         options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ShelterDbContext)));
     });
 
+builder.Services.AddPresentation();
 builder.Services.AddApplication();
 builder.Services.AddDataAccess(builder.Configuration);
-
-builder.Services.AddSingleton<ProblemDetailsFactory, ShelterProblemDelailsFactory>();
-
 
 var app = builder.Build();
 

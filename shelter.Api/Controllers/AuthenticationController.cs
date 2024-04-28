@@ -1,4 +1,5 @@
 ﻿using ErrorOr;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using shelter.Application.Authentication.Commands.Register;
@@ -12,43 +13,34 @@ namespace shelter.Api.Controllers;
 public class AuthenticationController : ApiController
 {
     private readonly ISender mediator;
+    private readonly IMapper mapper;
 
-    public AuthenticationController(ISender mediator)
+    public AuthenticationController(ISender mediator, IMapper mapper)
     {
         this.mediator = mediator;
+        this.mapper = mapper;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var command = new RegisterCommand(request.FirstName, request.LastName, request.Email, request.IdUserRole, request.Phone, request.Password);
+        var command = mapper.Map<RegisterCommand>(request);
         ErrorOr<AuthenticationResult> authResult = await mediator.Send(command);
 
         return authResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors));
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
-        var query = new LoginQuery(request.Email, request.Password);
+        var query = mapper.Map<LoginQuery>(request);
         var authResult = await mediator.Send(query);
 
         return authResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors)
             );
-    }
-    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
-    {
-        return new AuthenticationResponse(
-                    authResult.User.Id,
-                    authResult.User.FirstName,
-                    authResult.User.LastName,
-                    authResult.User.Email,
-                    authResult.User.IdUserRole,
-                    authResult.User.Phone,
-                    authResult.Token);
     }
 }
