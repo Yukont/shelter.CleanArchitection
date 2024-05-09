@@ -7,7 +7,6 @@ using shelter.Application.Common.Interfaces.Service;
 using shelter.DataAccess.Authentication;
 using shelter.DataAccess.Repositories;
 using shelter.DataAccess.Services;
-using shelter.Domain.Abstractions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Text;
@@ -24,7 +23,6 @@ public static class DependencyInjection
 
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
-        services.AddScoped<IAnimalStatusesRepository, AnimalStatusesRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }

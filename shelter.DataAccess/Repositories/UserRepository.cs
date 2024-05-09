@@ -1,5 +1,5 @@
 ﻿using shelter.Application.Common.Interfaces.Persistence;
-using shelter.Domain.Models;
+using shelter.Domain.User;
 
 namespace shelter.DataAccess.Repositories;
 

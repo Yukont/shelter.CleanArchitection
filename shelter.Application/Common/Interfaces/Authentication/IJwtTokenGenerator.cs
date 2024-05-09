@@ -1,4 +1,4 @@
-﻿using shelter.Domain.Models;
+﻿using shelter.Domain.User;
 
 namespace shelter.Application.Common.Interfaces.Authentication;
 

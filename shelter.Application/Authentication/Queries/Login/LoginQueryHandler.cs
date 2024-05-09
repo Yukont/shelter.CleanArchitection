@@ -4,7 +4,7 @@ using shelter.Application.Authentication.Common;
 using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Domain.Common.Errors;
-using shelter.Domain.Models;
+using shelter.Domain.User;
 
 namespace shelter.Application.Authentication.Queries.Login;
 

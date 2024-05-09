@@ -2,9 +2,9 @@
 using MediatR;
 using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Persistence;
-using shelter.Domain.Models;
 using shelter.Domain.Common.Errors;
 using shelter.Application.Authentication.Common;
+using shelter.Domain.User;
 
 namespace shelter.Application.Authentication.Commands.Register;
 
@@ -26,15 +26,14 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
             return Errors.User.DublicateEmail;
         }
 
-        var user = new User
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            IdUserRole = command.IdUserRole,
-            Phone = command.Phone,
-            Password = command.Password
-        };
+        var user = User.Create(
+            command.FirstName,
+            command.LastName,
+            command.Email,
+            command.IdUserRole,
+            command.Phone,
+            command.Password
+        );
 
         userRepository.Add(user);
 

@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Service;
-using shelter.Domain.Models;
+using shelter.Domain.User;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
