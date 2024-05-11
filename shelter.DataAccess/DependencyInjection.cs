@@ -23,7 +23,16 @@ public static class DependencyInjection
 
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
+        services.AddRepositories();
+
+        return services;
+    }
+    public static IServiceCollection AddRepositories(
+        this IServiceCollection services)
+    {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IAnimalRepository, AnimalRepository>();
+
         return services;
     }
     public static IServiceCollection AddAuth(

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using shelter.Application;
 
 namespace shelter.Application.Authentication.Commands.Register;
 

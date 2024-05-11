@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using shelter.Domain.Abstractions;
 using MediatR;
 using shelter.Application.Authentication.Commands.Register;
 using ErrorOr;
@@ -22,8 +21,6 @@ public static class DependencyInjection
 
         //services.AddTransient<IValidator<RegisterCommand>, RegisterCommandValidator>();
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
-        services.AddScoped<IAnimalStatusService, AnimalStatusService>();
 
         return services;
     }

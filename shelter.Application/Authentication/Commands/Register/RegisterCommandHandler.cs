@@ -5,6 +5,7 @@ using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Domain.Common.Errors;
 using shelter.Application.Authentication.Common;
 using shelter.Domain.User;
+using shelter.Domain.UserRole.ValueObjects;
 
 namespace shelter.Application.Authentication.Commands.Register;
 
@@ -30,7 +31,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
             command.FirstName,
             command.LastName,
             command.Email,
-            command.IdUserRole,
+            UserRoleId.CreateUnique(),//command.IdUserRole,
             command.Phone,
             command.Password
         );
