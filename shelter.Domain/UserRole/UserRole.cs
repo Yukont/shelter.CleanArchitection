@@ -1,9 +1,9 @@
 ﻿using shelter.Domain.Common.Models;
-using shelter.Domain.User.ValueObjects;
+using shelter.Domain.UserRole.ValueObjects;
 
-namespace shelter.Domain.User.Entities;
+namespace shelter.Domain.UserRole;
 
-public sealed class UserRole : Entity<UserRoleId>
+public sealed class UserRole : AggregateRoot<UserRoleId>
 {
     public string Name { get; }
     private UserRole(UserRoleId id, string name)

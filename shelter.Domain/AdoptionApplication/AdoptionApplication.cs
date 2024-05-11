@@ -1,5 +1,5 @@
-﻿using shelter.Domain.AdoptionApplication.Entities;
-using shelter.Domain.AdoptionApplication.ValueObjects;
+﻿using shelter.Domain.AdoptionApplication.ValueObjects;
+using shelter.Domain.AdoptionApplicationStatus.ValueObjects;
 using shelter.Domain.Animal.ValueObjects;
 using shelter.Domain.Common.Models;
 using shelter.Domain.User.ValueObjects;

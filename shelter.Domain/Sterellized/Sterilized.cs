@@ -1,9 +1,9 @@
-﻿using shelter.Domain.Animal.ValueObjects;
-using shelter.Domain.Common.Models;
+﻿using shelter.Domain.Common.Models;
+using shelter.Domain.Sterellized.ValueObjects;
 
-namespace shelter.Domain.Animal.Entities;
+namespace shelter.Domain.Sterellized;
 
-public sealed class Sterilized : Entity<SterilizedId>
+public sealed class Sterilized : AggregateRoot<SterilizedId>
 {
     public string Name { get; }
     private Sterilized(SterilizedId id, string name)

@@ -1,5 +1,6 @@
 ﻿using shelter.Domain.Common.Models;
 using shelter.Domain.User.ValueObjects;
+using shelter.Domain.UserRole.ValueObjects;
 
 namespace shelter.Domain.User;
 

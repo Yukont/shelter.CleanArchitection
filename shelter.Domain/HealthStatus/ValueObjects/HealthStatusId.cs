@@ -1,17 +1,17 @@
 ﻿using shelter.Domain.Common.Models;
 
-namespace shelter.Domain.Animal.ValueObjects;
+namespace shelter.Domain.HealthStatus.ValueObjects;
 
-public sealed class AdoptionStatusId : ValueObject
+public sealed class HealthStatusId : ValueObject
 {
     public Guid Value { get; }
 
-    private AdoptionStatusId(Guid value)
+    private HealthStatusId(Guid value)
     {
         Value = value;
     }
 
-    public static AdoptionStatusId CreateUnique()
+    public static HealthStatusId CreateUnique()
     {
         return new(Guid.NewGuid());
     }

@@ -1,6 +1,11 @@
-﻿using shelter.Domain.Animal.Entities;
+﻿using shelter.Domain.AdoptionStatus.ValueObjects;
+using shelter.Domain.Animal.Entities;
 using shelter.Domain.Animal.ValueObjects;
 using shelter.Domain.Common.Models;
+using shelter.Domain.Gender.ValueObjects;
+using shelter.Domain.HealthStatus.ValueObjects;
+using shelter.Domain.Species.ValueObjects;
+using shelter.Domain.Sterellized.ValueObjects;
 
 namespace shelter.Domain.Animal;
 
@@ -28,7 +33,8 @@ public sealed class Animal : AggregateRoot<AnimalId>
         GenderId genderId,
         SterilizedId sterilizedId,
         AdoptionStatusId adoptionStatusId,
-        HealthStatusId healthStatusId)
+        HealthStatusId healthStatusId,
+        List<Vaccination> vaccinations)
         : base(id)
     {
         Name = name;
@@ -40,6 +46,7 @@ public sealed class Animal : AggregateRoot<AnimalId>
         SterilizedId = sterilizedId;
         AdoptionStatusId = adoptionStatusId;
         HealthStatusId = healthStatusId;
+        _vaccinations = vaccinations;
     }
 
     public static Animal Create(
@@ -51,7 +58,8 @@ public sealed class Animal : AggregateRoot<AnimalId>
         GenderId genderId,
         SterilizedId sterilizedId,
         AdoptionStatusId adoptionStatusId,
-        HealthStatusId healthStatusId)
+        HealthStatusId healthStatusId,
+        List<Vaccination> vaccinations)
     {
         return new(
             AnimalId.CreateUnique(),
@@ -63,6 +71,7 @@ public sealed class Animal : AggregateRoot<AnimalId>
             genderId,
             sterilizedId,
             adoptionStatusId,
-            healthStatusId);
+            healthStatusId,
+            vaccinations);
     }
 }

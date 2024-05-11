@@ -1,9 +1,9 @@
-﻿using shelter.Domain.Animal.ValueObjects;
-using shelter.Domain.Common.Models;
+﻿using shelter.Domain.Common.Models;
+using shelter.Domain.Gender.ValueObjects;
 
-namespace shelter.Domain.Animal.Entities;
+namespace shelter.Domain.Gender;
 
-public sealed class Gender : Entity<GenderId>
+public sealed class Gender : AggregateRoot<GenderId>
 {
     public string Name { get; }
     private Gender(GenderId id, string name)

@@ -1,17 +1,17 @@
 ﻿using shelter.Domain.Common.Models;
 
-namespace shelter.Domain.User.ValueObjects;
+namespace shelter.Domain.Sterellized.ValueObjects;
 
-public sealed class UserRoleId : ValueObject
+public sealed class SterilizedId : ValueObject
 {
     public Guid Value { get; }
 
-    private UserRoleId(Guid value)
+    private SterilizedId(Guid value)
     {
         Value = value;
     }
 
-    public static UserRoleId CreateUnique()
+    public static SterilizedId CreateUnique()
     {
         return new(Guid.NewGuid());
     }

@@ -1,6 +1,6 @@
 ﻿using shelter.Domain.Common.Models;
 
-namespace shelter.Domain.Animal.ValueObjects;
+namespace shelter.Domain.Gender.ValueObjects;
 
 public sealed class GenderId : ValueObject
 {

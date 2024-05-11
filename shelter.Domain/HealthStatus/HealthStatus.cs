@@ -1,9 +1,9 @@
-﻿using shelter.Domain.Animal.ValueObjects;
-using shelter.Domain.Common.Models;
+﻿using shelter.Domain.Common.Models;
+using shelter.Domain.HealthStatus.ValueObjects;
 
-namespace shelter.Domain.Animal.Entities;
+namespace shelter.Domain.HealthStatus;
 
-public sealed class HealthStatus : Entity<HealthStatusId>
+public sealed class HealthStatus : AggregateRoot<HealthStatusId>
 {
     public string Name { get; }
     private HealthStatus(HealthStatusId id, string name)

@@ -1,6 +1,6 @@
 ﻿using shelter.Domain.Common.Models;
 
-namespace shelter.Domain.AdoptionApplication.ValueObjects;
+namespace shelter.Domain.AdoptionApplicationStatus.ValueObjects;
 
 public sealed class AdoptionApplicationStatusId : ValueObject
 {

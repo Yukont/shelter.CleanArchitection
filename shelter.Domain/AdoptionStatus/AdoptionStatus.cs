@@ -1,9 +1,9 @@
-﻿using shelter.Domain.Animal.ValueObjects;
+﻿using shelter.Domain.AdoptionStatus.ValueObjects;
 using shelter.Domain.Common.Models;
 
-namespace shelter.Domain.Animal.Entities;
+namespace shelter.Domain.AdoptionStatus;
 
-public sealed class AdoptionStatus : Entity<AdoptionStatusId>
+public sealed class AdoptionStatus : AggregateRoot<AdoptionStatusId>
 {
     public string Name { get; }
     private AdoptionStatus(AdoptionStatusId id, string name)

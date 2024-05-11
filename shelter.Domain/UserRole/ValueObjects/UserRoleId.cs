@@ -1,17 +1,17 @@
 ﻿using shelter.Domain.Common.Models;
 
-namespace shelter.Domain.Animal.ValueObjects;
+namespace shelter.Domain.UserRole.ValueObjects;
 
-public sealed class SpeciesId : ValueObject
+public sealed class UserRoleId : ValueObject
 {
     public Guid Value { get; }
 
-    private SpeciesId(Guid value)
+    private UserRoleId(Guid value)
     {
         Value = value;
     }
 
-    public static SpeciesId CreateUnique()
+    public static UserRoleId CreateUnique()
     {
         return new(Guid.NewGuid());
     }
