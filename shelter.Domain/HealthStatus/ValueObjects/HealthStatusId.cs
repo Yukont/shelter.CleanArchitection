@@ -15,6 +15,10 @@ public sealed class HealthStatusId : ValueObject
     {
         return new(Guid.NewGuid());
     }
+    public static HealthStatusId Create(Guid value)
+    {
+        return new(value);
+    }
 
     public override IEnumerable<object> GetEqualityComponents()
     {

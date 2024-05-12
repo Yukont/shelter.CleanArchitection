@@ -16,6 +16,11 @@ public sealed class SterilizedId : ValueObject
         return new(Guid.NewGuid());
     }
 
+    public static SterilizedId Create(Guid value)
+    {
+        return new(value);
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

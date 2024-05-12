@@ -16,4 +16,10 @@ public sealed class Species : AggregateRoot<SpeciesId>
     {
         return new(SpeciesId.CreateUnique(), name);
     }
+#pragma warning disable CS8618
+    private Species()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

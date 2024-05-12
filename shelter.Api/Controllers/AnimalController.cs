@@ -20,14 +20,9 @@ public class AnimalController : ApiController
 
     [HttpPost]
     public async Task<IActionResult> CreateAnimal(
-        CreateAnimalsRequest request,
-        string speciesId,
-        string genderId,
-        string sterilizedId,
-        string adoptionStatusId,
-        string healthStatusId)
+        CreateAnimalsRequest request)
     {
-        var command = _mapper.Map<CreateAnimalCommand>((request, speciesId, genderId, sterilizedId, adoptionStatusId, healthStatusId));
+        var command = _mapper.Map<CreateAnimalCommand>(request);
 
         var createAnomalResult = await _mediator.Send(command);
         return createAnomalResult.Match(

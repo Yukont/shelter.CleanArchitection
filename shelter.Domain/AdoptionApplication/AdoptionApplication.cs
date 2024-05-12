@@ -33,4 +33,10 @@ public sealed class AdoptionApplication : AggregateRoot<AdoptionApplicationId>
     {
         return new(AdoptionApplicationId.CreateUnique(), userId, animalId, adoptionApplicationStatusId, description);
     }
+#pragma warning disable CS8618
+    private AdoptionApplication()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

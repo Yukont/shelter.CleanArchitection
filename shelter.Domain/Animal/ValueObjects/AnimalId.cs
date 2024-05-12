@@ -16,6 +16,11 @@ public sealed class AnimalId : ValueObject
         return new (Guid.NewGuid());
     }
 
+    public static AnimalId Create(Guid value)
+    {
+        return new(value);
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

@@ -20,4 +20,10 @@ public sealed class News : AggregateRoot<NewsId>
     {
         return new(NewsId.CreateUnique(), heading, description, DateTime.UtcNow);
     }
+#pragma warning disable CS8618
+    private News()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

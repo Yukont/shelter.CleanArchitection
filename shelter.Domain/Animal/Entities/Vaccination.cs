@@ -18,4 +18,10 @@ public sealed class Vaccination : Entity<VaccinationId>
     {
         return new(VaccinationId.CreateUnique(), name, dateTime);
     }
+#pragma warning disable CS8618
+    private Vaccination()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

@@ -20,4 +20,10 @@ public sealed class Article : AggregateRoot<ArticleId>
     {
         return new(ArticleId.CreateUnique(), heading, description, DateTime.UtcNow);
     }
+#pragma warning disable CS8618
+    private Article()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

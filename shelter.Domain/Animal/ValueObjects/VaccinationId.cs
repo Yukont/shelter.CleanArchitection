@@ -15,6 +15,10 @@ public sealed class VaccinationId : ValueObject
     {
         return new(Guid.NewGuid());
     }
+    public static VaccinationId Create(Guid value)
+    {
+        return new(value);
+    }
 
     public override IEnumerable<object> GetEqualityComponents()
     {

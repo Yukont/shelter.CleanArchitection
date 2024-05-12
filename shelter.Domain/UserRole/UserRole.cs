@@ -16,4 +16,10 @@ public sealed class UserRole : AggregateRoot<UserRoleId>
     {
         return new(UserRoleId.CreateUnique(), name);
     }
+#pragma warning disable CS8618
+    private UserRole()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

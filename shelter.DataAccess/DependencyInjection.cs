@@ -5,11 +5,13 @@ using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Application.Common.Interfaces.Service;
 using shelter.DataAccess.Authentication;
-using shelter.DataAccess.Repositories;
 using shelter.DataAccess.Services;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using shelter.DataAccess.Persistence.Repositories;
+using shelter.DataAccess.Persistence.Context;
 
 namespace shelter.DataAccess;
 

@@ -40,4 +40,10 @@ public sealed class User : AggregateRoot<UserId>
     {
         return new(UserId.CreateUnique(), firstName, lastName, email, userRoleId, phone, password);
     }
+#pragma warning disable CS8618
+    private User()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

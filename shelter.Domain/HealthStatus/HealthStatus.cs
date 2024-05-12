@@ -16,4 +16,10 @@ public sealed class HealthStatus : AggregateRoot<HealthStatusId>
     {
         return new(HealthStatusId.CreateUnique(), name);
     }
+#pragma warning disable CS8618
+    private HealthStatus()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

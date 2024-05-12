@@ -5,6 +5,11 @@ public record CreateAnimalsRequest(
     int Age,
     string Description,
     string Photo,
+    Guid SpeciesId,
+    Guid GenderId,
+    Guid SterilizedId,
+    Guid AdoptionStatusId,
+    Guid HealthStatusId,
     List<VaccinationRequest> Vaccinations
     );
 

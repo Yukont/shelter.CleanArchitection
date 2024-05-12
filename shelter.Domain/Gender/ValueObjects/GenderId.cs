@@ -15,6 +15,10 @@ public sealed class GenderId : ValueObject
     {
         return new(Guid.NewGuid());
     }
+    public static GenderId Create(Guid value)
+    {
+        return new(value);
+    }
 
     public override IEnumerable<object> GetEqualityComponents()
     {

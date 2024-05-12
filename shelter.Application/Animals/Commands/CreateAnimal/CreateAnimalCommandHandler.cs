@@ -27,11 +27,11 @@ public class CreateAnimalCommandHandler : IRequestHandler<CreateAnimalCommand, E
             request.Age,
             request.Description,
             request.Photo,
-            SpeciesId.CreateUnique(),//request.SpeciesId,
-            GenderId.CreateUnique(),//request.GenderId,
-            SterilizedId.CreateUnique(),//request.SterilizedId,
-            AdoptionStatusId.CreateUnique(),//request.AdoptionStatusId,
-            HealthStatusId.CreateUnique(),//request.HealthStatusId,
+            SpeciesId.Create(request.SpeciesId),
+            GenderId.Create(request.GenderId),
+            SterilizedId.Create(request.SterilizedId),
+            AdoptionStatusId.Create(request.AdoptionStatusId),
+            HealthStatusId.Create(request.HealthStatusId),
             request.Vaccinations.ConvertAll(vaccination => Vaccination.Create(
                 vaccination.Name,
                 vaccination.DateTime)));

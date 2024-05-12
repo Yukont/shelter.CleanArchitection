@@ -1,19 +1,19 @@
 ﻿namespace shelter.Contracts.Animals;
 
 public record AnimalResponce(
-    string Id,
+    Guid Id,
     string Name,
     int Age,
     string Description,
     string Photo,
-    string SpeciesId,
-    string GenderId,
-    string SterilizedId,
-    string AdoptionStatusId,
-    string HealthStatusId,
+    Guid SpeciesId,
+    Guid GenderId,
+    Guid SterilizedId,
+    Guid AdoptionStatusId,
+    Guid HealthStatusId,
     List<VaccinationResponce> Vaccinations);
 
 public record VaccinationResponce(
-    string Id,
+    Guid Id,
     string Name,
     DateTime DateTime);

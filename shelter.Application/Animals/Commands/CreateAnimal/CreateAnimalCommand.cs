@@ -9,11 +9,11 @@ public record CreateAnimalCommand(
     int Age,
     string Description,
     string Photo,
-    string SpeciesId,
-    string GenderId,
-    string SterilizedId,
-    string AdoptionStatusId,
-    string HealthStatusId,
+    Guid SpeciesId,
+    Guid GenderId,
+    Guid SterilizedId,
+    Guid AdoptionStatusId,
+    Guid HealthStatusId,
     List<VaccinationCommand> Vaccinations) : IRequest<ErrorOr<Animal>>;
 
 public record VaccinationCommand(

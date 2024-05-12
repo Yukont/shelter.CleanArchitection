@@ -16,4 +16,10 @@ public sealed class Gender : AggregateRoot<GenderId>
     {
         return new(GenderId.CreateUnique(), name);
     }
+#pragma warning disable CS8618
+    private Gender()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

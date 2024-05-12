@@ -16,4 +16,10 @@ public sealed class AdoptionStatus : AggregateRoot<AdoptionStatusId>
     {
         return new(AdoptionStatusId.CreateUnique(), name);
     }
+#pragma warning disable CS8618
+    private AdoptionStatus()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

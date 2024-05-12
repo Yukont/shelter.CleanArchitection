@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using shelter.DataAccess.Context;
 using shelter.DataAccess;
 using shelter.Application;
 using shelter.Api;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using shelter.DataAccess.Persistence.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,15 +13,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddPresentation();
+builder.Services.AddApplication();
+builder.Services.AddDataAccess(builder.Configuration);
+
 builder.Services.AddDbContext<ShelterDbContext>(
     options =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ShelterDbContext)));
     });
-
-builder.Services.AddPresentation();
-builder.Services.AddApplication();
-builder.Services.AddDataAccess(builder.Configuration);
 
 var app = builder.Build();
 

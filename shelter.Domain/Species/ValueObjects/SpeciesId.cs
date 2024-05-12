@@ -15,6 +15,10 @@ public sealed class SpeciesId : ValueObject
     {
         return new(Guid.NewGuid());
     }
+    public static SpeciesId Create(Guid value)
+    {
+        return new(value);
+    }
 
     public override IEnumerable<object> GetEqualityComponents()
     {

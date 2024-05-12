@@ -1,7 +1,7 @@
 ﻿using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Domain.User;
 
-namespace shelter.DataAccess.Repositories;
+namespace shelter.DataAccess.Persistence.Repositories;
 
 internal class UserRepository : IUserRepository
 {

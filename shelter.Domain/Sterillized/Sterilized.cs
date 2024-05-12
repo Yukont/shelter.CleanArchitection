@@ -16,4 +16,10 @@ public sealed class Sterilized : AggregateRoot<SterilizedId>
     {
         return new(SterilizedId.CreateUnique(), name);
     }
+#pragma warning disable CS8618
+    private Sterilized()
+    {
+
+    }
+#pragma warning restore CS8618 
 }

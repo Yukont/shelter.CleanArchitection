@@ -31,7 +31,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
             command.FirstName,
             command.LastName,
             command.Email,
-            UserRoleId.CreateUnique(),//command.IdUserRole,
+            UserRoleId.Create(command.IdUserRole),
             command.Phone,
             command.Password
         );
