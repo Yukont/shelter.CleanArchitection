@@ -1,4 +1,4 @@
-﻿using shelter.Domain.Animal;
+﻿using shelter.Domain.AnimalAggregate;
 
 namespace shelter.Application.Common.Interfaces.Persistence;
 

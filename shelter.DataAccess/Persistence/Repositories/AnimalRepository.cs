@@ -1,6 +1,6 @@
 ﻿using shelter.Application.Common.Interfaces.Persistence;
 using shelter.DataAccess.Persistence.Context;
-using shelter.Domain.Animal;
+using shelter.Domain.AnimalAggregate;
 
 namespace shelter.DataAccess.Persistence.Repositories;
 

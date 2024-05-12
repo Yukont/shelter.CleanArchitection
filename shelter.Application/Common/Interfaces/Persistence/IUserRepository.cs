@@ -1,4 +1,4 @@
-﻿using shelter.Domain.User;
+﻿using shelter.Domain.UserAggregate;
 
 namespace shelter.Application.Common.Interfaces.Persistence;
 

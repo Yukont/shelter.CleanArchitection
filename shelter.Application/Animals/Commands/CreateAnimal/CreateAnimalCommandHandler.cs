@@ -1,13 +1,13 @@
 ﻿using ErrorOr;
 using MediatR;
 using shelter.Application.Common.Interfaces.Persistence;
-using shelter.Domain.AdoptionStatus.ValueObjects;
-using shelter.Domain.Animal;
-using shelter.Domain.Animal.Entities;
-using shelter.Domain.Gender.ValueObjects;
-using shelter.Domain.HealthStatus.ValueObjects;
-using shelter.Domain.Species.ValueObjects;
-using shelter.Domain.Sterellized.ValueObjects;
+using shelter.Domain.AdoptionStatusAggregate.ValueObjects;
+using shelter.Domain.AnimalAggregate;
+using shelter.Domain.AnimalAggregate.Entities;
+using shelter.Domain.GenderAggregate.ValueObjects;
+using shelter.Domain.HealthStatusAggregate.ValueObjects;
+using shelter.Domain.SpeciesAggregate.ValueObjects;
+using shelter.Domain.SterillizedAggregate.ValueObjects;
 
 namespace shelter.Application.Animals.Commands.CreateAnimal;
 

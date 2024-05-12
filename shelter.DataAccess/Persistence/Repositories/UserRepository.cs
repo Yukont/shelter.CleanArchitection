@@ -1,5 +1,5 @@
 ﻿using shelter.Application.Common.Interfaces.Persistence;
-using shelter.Domain.User;
+using shelter.Domain.UserAggregate;
 
 namespace shelter.DataAccess.Persistence.Repositories;
 

@@ -1,6 +1,6 @@
 ﻿using ErrorOr;
 using MediatR;
-using shelter.Domain.Animal;
+using shelter.Domain.AnimalAggregate;
 
 namespace shelter.Application.Animals.Commands.CreateAnimal;
 

@@ -4,8 +4,8 @@ using shelter.Application.Common.Interfaces.Authentication;
 using shelter.Application.Common.Interfaces.Persistence;
 using shelter.Domain.Common.Errors;
 using shelter.Application.Authentication.Common;
-using shelter.Domain.User;
-using shelter.Domain.UserRole.ValueObjects;
+using shelter.Domain.UserAggregate;
+using shelter.Domain.UserRoleAggregate.ValueObjects;
 
 namespace shelter.Application.Authentication.Commands.Register;
 
